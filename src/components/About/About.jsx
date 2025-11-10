@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./About.module.css";
 
-import aboutImage from "../../../assets/about/aboutImage.png";
+import myAbout from "../../../assets/about/myAbout.png";
 import cursorIcon from "../../../assets/about/cursorIcon.png";
 import serverIcon from "../../../assets/about/serverIcon.png";
 import uiIcon from "../../../assets/about/uiIcon.png";
@@ -14,7 +14,7 @@ export const About = () => {
       <h2 className={styles.title}>About</h2>
       
       <div className={styles.content}>
-        <img src={aboutImage} alt="About section picture" className={styles.aboutImage}/>
+        <img src={myAbout} alt="About section picture" className={styles.aboutImage}/>
         <ul className={styles.aboutItems}>
           <li className={styles.aboutItem}>
             <img src={cursorIcon} alt="Machine Learning Icon" />
