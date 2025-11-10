@@ -1,0 +1,132 @@
+@import "../../vars.css";
+
+.container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 49px;
+  z-index: 1;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: var(--color-text);
+  z-index: 1;
+}
+
+.title {
+  font-size: 72px;
+  font-weight: 900;
+  margin-bottom: 33px;
+  font-family: var(--font-roboto);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 1) 70%,
+    rgba(255, 255, 255, 0) 120%
+  );
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+.description {
+  font-size: 30px;
+  font-family: var(--font-roboto);
+  margin-bottom: 52px;
+}
+
+.contactBtn {
+  display: inline-block;
+  text-decoration: none;
+  background-color: #5e63e6;     /* soft purple tone */
+  color: #ffffff;                /* pure white text */
+  border: none;
+  border-radius: 999px;          /* fully rounded pill shape */
+  font-size: 20px;               /* balanced text size */
+  font-weight: 600;
+  padding: 12px 28px;            /* slightly tighter padding */
+  text-align: center;
+  line-height: 1.2;
+  box-shadow: 0 6px 15px rgba(19, 21, 56, 0.25); /* subtle soft glow */
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Optional hover effect for a subtle lift */
+.contactBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(19, 21, 56, 0.35);
+}
+
+/* Optional pressed (active) state */
+.contactBtn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(19, 21, 56, 0.2);
+}
+
+.heroImg {
+  width: 350px;                /* adjust size as you like */
+  height: 320px;               /* make equal to keep perfect circle */
+  border-radius: 50%;          /* makes it circular */
+  object-fit: cover;           /* crops image neatly inside circle */
+  border: 4px solid #5e63e6;   /* optional soft purple border */
+  box-shadow: 0 8px 25px rgba(19, 21, 56, 0.4); /* subtle glow */
+  animation-name: floating;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes floating {
+  0% {
+    transform: translate(0, 0px);
+  }
+  50% {
+    transform: translate(0, 10px);
+  }
+  100% {
+    transform: translate(0, -0px);
+  }
+}
+
+.topBlur {
+  position: absolute;
+  width: 50vw;
+  height: 50vw;
+  min-width: 350px;
+  min-width: 350px;
+  top: -128px;
+  left: -10vw;
+  border-radius: 764px;
+  background: rgba(25, 55, 109, 0.7);
+  filter: blur(100px);
+  z-index: 0;
+}
+
+.bottomBlur {
+  position: absolute;
+  width: 70vw;
+  height: 50vw;
+  min-width: 350px;
+  min-width: 250px;
+  top: 246px;
+  right: -25vw;
+  border-radius: 764px;
+  background: rgba(25, 55, 109, 0.7);
+  filter: blur(100px);
+  z-index: 0;
+}
+
+@media screen and (max-width: 830px) {
+  .container {
+    flex-direction: column-reverse;
+  }
+
+  .content {
+    align-items: center;
+  }
+}

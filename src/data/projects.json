@@ -1,0 +1,42 @@
+[
+  {
+    "title": "ClearSpeak",
+    "imageSrc": "projects/ASR.png",
+    "description": "Developed a Raspberry Pi–powered speech assistant using machine learning to help people with speech disabilities communicate through accurate voice recognition.”",
+    "skills": ["Python", "Scikit-learn", "Raspberry Pi", "Librosa"],
+    "demo": "https://youtu.be/NiHAARsAEFw",
+    "source": "https://github.com/khizarhaider2000/ASR"
+  },
+  {
+    "title": "🏀 NBA Player Stats Analyzer",
+    "imageSrc": "projects/nba_stat_analyzer.png",
+    "description": "This project explores and analyzes NBA player statistics over the past 5 seasons (2021–2025) using Python, Pandas, and Matplotlib. It includes:",
+    "skills": ["Python", "pandas", "NumPy", "matplotlib"],
+    "demo": "https://www.example.com",
+    "source": "https://github.com/khizarhaider2000/NBA-Player-Analysis"
+  },
+  {
+    "title": " Rentify App",
+    "imageSrc": "projects/rentify.png",
+    "description": "Rentify is a mobile Android app that connects people who want to rent out their items (Lessors) with those looking to rent (Renters).",
+    "skills": ["Java", "Android Studio", "Firebase", "XML"],
+    "demo": "https://www.youtube.com/watch?v=uXYDXKlzsSY",
+    "source": "https://github.com/khizarhaider2000/Rentify?tab=readme-ov-file"
+  },
+  {
+    "title": "Embedded Systems Lab – Alarm System & Linear Pong Game",
+    "imageSrc": "projects/stm32.jpg",
+    "description": "Developed STM32-based Alarm System and LED Pong Game demonstrating real-time I²C, GPIO, and state-machine control.",
+    "skills": ["C", "STM32", " I²C", "GPIO"],
+    "demo": "https://youtube.com/shorts/YWDVccMRfac?feature=share",
+    "source": "hhttps://github.com/khizarhaider2000/STM32-AlarmSystem-LinearPong"
+  },
+  {
+    "title": "Project E",
+    "imageSrc": "projects/budgetbuddy.png",
+    "description": "BudgetBuddy is a mobile Android app that helps users manage income, track expenses, and visualize monthly budgets.",
+    "skills": ["Java", "Android Studio", "Firebase", "XML"],
+    "demo": "https://www.example.com",
+    "source": "https://github.com/khizarhaider2000/BudgetBuddy"
+  }
+]
