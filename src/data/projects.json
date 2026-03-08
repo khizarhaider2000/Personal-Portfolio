@@ -8,9 +8,17 @@
     "source": "https://github.com/khizarhaider2000/ASR"
   },
   {
-    "title": "🏀 NBA Player Stats Analyzer",
+    "title": "CourtVision",
+    "imageSrc": "projects/CV_logo.jpg",
+    "description": "NBA analytics platform that converts natural-language questions into statistical visualizations, allowing users to explore team performance metrics like offensive rating, efficiency, and pace through interactive charts. It includes:",
+    "skills": ["Python", "pandas", "NBA API", "Data Analysis", "Data Visualization"],
+    "demo": "https://x.com/CourtVisionX/status/2016709559012778309?s=20",
+    "source": "https://github.com/khizarhaider2000/CourtVision"
+  },
+    {
+    "title": "NBA Player Stats Analyzer",
     "imageSrc": "projects/nba_stat_analyzer.png",
-    "description": "This project explores and analyzes NBA player statistics over the past 5 seasons (2021–2025) using Python, Pandas, and Matplotlib. It includes:",
+    "description": "This project explores and analyzes NBA player statistics over the past 5 seasons (2021–2025) using Python, Pandas, and Matplotlib.",
     "skills": ["Python", "pandas", "NumPy", "matplotlib"],
     "demo": "https://www.example.com",
     "source": "https://github.com/khizarhaider2000/NBA-Player-Analysis"
@@ -32,7 +40,7 @@
     "source": "hhttps://github.com/khizarhaider2000/STM32-AlarmSystem-LinearPong"
   },
   {
-    "title": "Project E",
+    "title": "BudgetBuddy",
     "imageSrc": "projects/budgetbuddy.png",
     "description": "BudgetBuddy is a mobile Android app that helps users manage income, track expenses, and visualize monthly budgets.",
     "skills": ["Java", "Android Studio", "Firebase", "XML"],
