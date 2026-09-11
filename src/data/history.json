@@ -1,10 +1,26 @@
 [
   {
-    "role": "Payroll and Invoicing Specialist",
-    "organisation": "BeHome Nursing",
-    "startDate": "Jun, 2022",
+    "role": "Data Analyst (Co-op), General Social Survey (GSS)",
+    "organisation": "Statistics Canada",
+    "startDate": "Apr, 2026",
     "endDate": "Present",
-    "experiences": ["Managed payroll for 250+ employees with 99% accuracy.", "Handled private invoicing for 100+ clients"],
-    "imageSrc": "history/bhn.png"
+    "experiences": [
+      "Built an R-based ETL pipeline to compute weighted estimates, bootstrap confidence intervals, and statistically significant differences across 200+ data points with automated ggplot2 visualizations.",
+      "Developed a CODR data validation script to compare published tables against processing data, flag discrepancies, and export formatted Excel reports for quality review.",
+      "Built a metadata extraction pipeline that parses survey specification files and automatically generates structured Word and Excel documentation for 10+ analysts."
+    ],
+    "imageSrc": "history/statcan.jpg"
+  },
+  {
+    "role": "Open-Source Statistical Programmer (Co-op), Canadian Survey on Disability (CSD)",
+    "organisation": "Statistics Canada",
+    "startDate": "Jan, 2026",
+    "endDate": "Apr, 2026",
+    "experiences": [
+      "Engineered automated flow-validation scripts for 28+ survey modules, identifying 100+ routing and skip-logic errors across 37+ test scenarios.",
+      "Migrated 50+ legacy SAS programs into modular R scripts using dplyr and openxlsx as part of Statistics Canada's transition to open-source tooling.",
+      "Built a master orchestration script to execute module validations and consolidate results into a single reproducible QA report."
+    ],
+    "imageSrc": "history/statcan.jpg"
   }
 ]
