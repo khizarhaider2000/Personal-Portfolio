@@ -16,26 +16,25 @@
 }
 
 .content{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    margin-top: 14px;
+    display: grid;
+    grid-template-columns: minmax(280px, 0.9fr) minmax(360px, 1.1fr);
+    align-items: start;
+    gap: 48px;
+    margin-top: 24px;
 }
 
 .skills{
-    width: 45%;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 37px;
-
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 28px 24px;
 }
 
 .skill{
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 11px;
-
+    gap: 12px;
+    min-width: 0;
 }
 
 .skillImageContainer{
@@ -46,80 +45,158 @@
     justify-content: center;
     width: 120px;
     height: 120px;
+    box-shadow: 0 16px 30px rgba(0, 0, 0, 0.18);
+    transition: transform 180ms ease, background-color 180ms ease;
 }
 
 .skillImageContainer img{
     width: 75px;
+    height: 75px;
+    object-fit: contain;
+}
 
+.skill:hover .skillImageContainer{
+    background-color: #244985;
+    transform: translateY(-4px);
 }
 
 .skill p{
-    font-size: 25px;
-    font-family: var(--font-roboto);
-    font-weight: 500;
+    font-size: 22px;
+    font-weight: 600;
 }
 
 .history{
-    width: 45%;
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 22px;
+    list-style: none;
 }
 
 .historyItem{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    gap: 18px;
+    background: linear-gradient(135deg, rgba(25, 55, 109, 0.96) 0%, rgba(25, 55, 109, 0.45) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 24px 26px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+}
+
+.historyHeader{
+    display: grid;
+    grid-template-columns: 64px 1fr;
     align-items: center;
-    gap:17px;
-    background: #19376d;
-    background: linear-gradient(90deg, #19376d 0%, rgba(25,55,109,0)100%);
-    border-radius: 10px;
-    padding: 24px;
+    gap: 18px;
 }
 
 .historyItem img{
-    width: 50px;
-
+    width: 64px;
+    height: 48px;
+    object-fit: contain;
+    background-color: #fff;
+    border-radius: 4px;
+    padding: 6px;
 }
 
-.historyItemDetails{
-    font-family: var(--font-roboto);
-
+.historyHeader h3{
+    font-size: clamp(22px, 2vw, 28px);
+    font-weight: 700;
+    line-height: 1.18;
 }
 
-.historyItemDetails h3{
-    font-size: 30px;
+.historyHeader p{
+    margin-top: 6px;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 17px;
     font-weight: 500;
 }
 
-.historyItemDetails p{
-    font-size: 20px;
-    font-weight: 300;
+.historyJots{
+    display: grid;
+    gap: 10px;
+    list-style: none;
 }
 
+.historyJots li{
+    position: relative;
+    padding-left: 20px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 18px;
+    line-height: 1.45;
+}
 
-.historyItemDetails ul{
-    margin-top: 6px;
-    list-style-position:inside ;
-    font-size: 25px;
-    list-style-type: disc;
-    margin-left: 17px;
+.historyJots li::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.72em;
+    width: 7px;
+    height: 7px;
+    background-color: var(--color_primary);
+    border-radius: 50%;
 }
 
   @media screen and (max-width: 830px){
+    .container{
+        width: 80vw;
+        margin-left: 10vw;
+        margin-right: 10vw;
+    }
+
     .content{
-        flex-direction: column;
-        align-items: center;
-        gap: 34px;
+        grid-template-columns: 1fr;
+        gap: 36px;
     }
 
     .skills{
+        grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+        gap: 24px 16px;
         width: 100%;
-        flex-direction: row;
-        justify-content: center;
     }
+
+    .skillImageContainer{
+        width: 92px;
+        height: 92px;
+    }
+
+    .skillImageContainer img{
+        width: 58px;
+        height: 58px;
+    }
+
     .history{
         width: 100%;
-        gap:9px
+        gap: 18px;
+    }
+
+    .historyHeader{
+        grid-template-columns: 56px 1fr;
+        gap: 14px;
+    }
+
+    .historyItem{
+        padding: 22px;
+    }
+
+    .historyItem img{
+        width: 56px;
+        height: 44px;
     }
   }
+
+@media screen and (max-width: 520px){
+    .container{
+        width: 88vw;
+        margin-left: 6vw;
+        margin-right: 6vw;
+    }
+
+    .skills{
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .historyHeader{
+        grid-template-columns: 1fr;
+    }
+}

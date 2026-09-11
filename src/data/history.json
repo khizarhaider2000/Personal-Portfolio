@@ -5,9 +5,9 @@
     "startDate": "Apr, 2026",
     "endDate": "Present",
     "experiences": [
-      "Built an R-based ETL pipeline to compute weighted estimates, bootstrap confidence intervals, and statistically significant differences across 200+ data points with automated ggplot2 visualizations.",
-      "Developed a CODR data validation script to compare published tables against processing data, flag discrepancies, and export formatted Excel reports for quality review.",
-      "Built a metadata extraction pipeline that parses survey specification files and automatically generates structured Word and Excel documentation for 10+ analysts."
+      "Built R ETL pipelines for weighted estimates, confidence intervals, and 200+ ggplot2 outputs.",
+      "Created CODR validation checks that flag discrepancies and export review-ready Excel reports.",
+      "Automated survey metadata extraction into structured Word and Excel docs for 10+ analysts."
     ],
     "imageSrc": "history/statcan.jpg"
   },
@@ -17,9 +17,9 @@
     "startDate": "Jan, 2026",
     "endDate": "Apr, 2026",
     "experiences": [
-      "Engineered automated flow-validation scripts for 28+ survey modules, identifying 100+ routing and skip-logic errors across 37+ test scenarios.",
-      "Migrated 50+ legacy SAS programs into modular R scripts using dplyr and openxlsx as part of Statistics Canada's transition to open-source tooling.",
-      "Built a master orchestration script to execute module validations and consolidate results into a single reproducible QA report."
+      "Automated flow validation for 28+ modules, catching 100+ routing and skip-logic issues.",
+      "Migrated 50+ SAS programs into modular R scripts with dplyr and openxlsx.",
+      "Built an orchestration script that consolidates validations into one reproducible QA report."
     ],
     "imageSrc": "history/statcan.jpg"
   }
