@@ -2,7 +2,7 @@
   {
     "title": "ClearSpeak",
     "imageSrc": "projects/ASR.png",
-    "description": "Developed a Raspberry Pi–powered speech assistant using machine learning to help people with speech disabilities communicate through accurate voice recognition.”",
+    "description": "Developed a Raspberry Pi–powered speech assistant using machine learning to help people with speech disabilities communicate through accurate voice recognition.",
     "skills": ["Python", "Scikit-learn", "Raspberry Pi", "Librosa"],
     "demo": "https://youtu.be/NiHAARsAEFw",
     "source": "https://github.com/khizarhaider2000/ASR"
@@ -10,21 +10,38 @@
   {
     "title": "CourtVision",
     "imageSrc": "projects/CV_logo.jpg",
-    "description": "NBA analytics platform that converts natural-language questions into statistical visualizations, allowing users to explore team performance metrics like offensive rating, efficiency, and pace through interactive charts. It includes:",
+    "description": "NBA analytics platform that converts natural-language questions into statistical visualizations, allowing users to explore team performance metrics like offensive rating, efficiency, and pace through interactive charts.",
     "skills": ["Python", "pandas", "NBA API", "Data Analysis", "Data Visualization"],
     "demo": "https://x.com/CourtVisionX/status/2016709559012778309?s=20",
     "source": "https://github.com/khizarhaider2000/CourtVision"
   },
-    {
-    "title": "NBA Player Stats Analyzer",
-    "imageSrc": "projects/nba_stat_analyzer.png",
-    "description": "This project explores and analyzes NBA player statistics over the past 5 seasons (2021–2025) using Python, Pandas, and Matplotlib.",
-    "skills": ["Python", "pandas", "NumPy", "matplotlib"],
+  {
+    "title": "FIFA WC Predictor",
+    "imageSrc": "projects/fifa_wc_predictor.png",
+    "description": "Machine learning–based FIFA World Cup prediction system that uses historical match data, Elo ratings, FIFA rankings, recent form, and advanced match features to predict wins, draws, and losses.",
+    "skills": ["Python", "Pandas", "Scikit-learn", "Flask", "React", "Machine Learning"],
     "demo": "https://www.example.com",
-    "source": "https://github.com/khizarhaider2000/NBA-Player-Analysis"
+    "source": "https://github.com/khizarhaider2000/wc-prediction-model"
   },
   {
-    "title": " Rentify App",
+    "title": "HoopIQ",
+    "imageSrc": "projects/hoopiq.png",
+    "description": "Full-stack NBA analytics platform for predictive player evaluation, salary analysis, and advanced statistical modeling using historical NBA statistics and contract data.",
+    "skills": ["Python", "FastAPI", "PostgreSQL", "React", "Scikit-learn", "NBA API"],
+    "demo": "https://www.example.com",
+    "source": "https://github.com/khizarhaider2000/HoopIQ"
+  },
+  {
+    "title": "March Metrics",
+    "imageSrc": "projects/march_metrics.png",
+    "description": "Full-stack NCAA basketball analytics platform for team rankings, matchup simulation, bracket generation, and tournament decision support using a custom 20-metric March Score system.",
+    "skills": ["Python", "FastAPI", "SQLAlchemy", "Next.js", "TypeScript", "Pandas"],
+    "demo": "https://march-metrics-zeta.vercel.app/",
+    "source": "https://github.com/khizarhaider2000/March-Metrics"
+  },
+
+  {
+    "title": "Rentify App",
     "imageSrc": "projects/rentify.png",
     "description": "Rentify is a mobile Android app that connects people who want to rent out their items (Lessors) with those looking to rent (Renters).",
     "skills": ["Java", "Android Studio", "Firebase", "XML"],
@@ -35,9 +52,17 @@
     "title": "Embedded Systems Lab – Alarm System & Linear Pong Game",
     "imageSrc": "projects/stm32.jpg",
     "description": "Developed STM32-based Alarm System and LED Pong Game demonstrating real-time I²C, GPIO, and state-machine control.",
-    "skills": ["C", "STM32", " I²C", "GPIO"],
+    "skills": ["C", "STM32", "I²C", "GPIO"],
     "demo": "https://youtube.com/shorts/YWDVccMRfac?feature=share",
-    "source": "hhttps://github.com/khizarhaider2000/STM32-AlarmSystem-LinearPong"
+    "source": "https://github.com/khizarhaider2000/STM32-AlarmSystem-LinearPong"
+  },
+  {
+    "title": "UART-Enabled Traffic Light Controller",
+    "imageSrc": "projects/traffic_light_fpga.png",
+    "description": "Developed a UART-enabled traffic light controller on an Altera DE2 FPGA using structural VHDL, finite state machines, and real-time serial communication.",
+    "skills": ["VHDL", "FPGA", "UART", "Quartus II", "Finite State Machines"],
+    "demo": "https://www.example.com",
+    "source": "https://github.com/khizarhaider2000/UART-Enabled-Traffic-Light-Controller"
   },
   {
     "title": "BudgetBuddy",
