@@ -1,0 +1,38 @@
+[
+  {
+    "role": "AI Analyst",
+    "organisation": "Impact Assessment Agency of Canada (IAAC)",
+    "startDate": "Sept, 2026",
+    "endDate": "Present",
+    "experiences": [
+      "Developed automated procurement applications using Microsoft Power Apps and Dataverse.",
+      "Built rule-based decision systems to streamline workflows and validate submissions.",
+      "Used Python and Azure DevOps to support internal automation and software development."
+    ],
+    "imageSrc": "history/iaac.jpg"
+  },
+  {
+    "role": "Data Analyst (Co-op), General Social Survey (GSS)",
+    "organisation": "Statistics Canada",
+    "startDate": "Apr, 2026",
+    "endDate": "Aug, 2026",
+    "experiences": [
+      "Built R ETL pipelines for weighted estimates, confidence intervals, and 200+ ggplot2 outputs.",
+      "Created CODR validation checks that flag discrepancies and export review-ready Excel reports.",
+      "Automated survey metadata extraction into structured Word and Excel docs for 10+ analysts."
+    ],
+    "imageSrc": "history/statcan.jpg"
+  },
+  {
+    "role": "Open-Source Statistical Programmer (Co-op), Canadian Survey on Disability (CSD)",
+    "organisation": "Statistics Canada",
+    "startDate": "Jan, 2026",
+    "endDate": "Apr, 2026",
+    "experiences": [
+      "Automated flow validation for 28+ modules, catching 100+ routing and skip-logic issues.",
+      "Migrated 50+ SAS programs into modular R scripts with dplyr and openxlsx.",
+      "Built an orchestration script that consolidates validations into one reproducible QA report."
+    ],
+    "imageSrc": "history/statcan.jpg"
+  }
+]
