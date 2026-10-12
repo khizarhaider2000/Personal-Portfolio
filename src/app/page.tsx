@@ -3,11 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowUpRight,
-  BrainCircuit,
-  CircuitBoard,
   Command,
-  Cpu,
-  Database,
   ExternalLink,
   Mail,
   Search,
@@ -30,8 +26,6 @@ const fadeUp = {
   visible: { opacity: 1, y: 0 },
 };
 
-const labIcons = [BrainCircuit, CircuitBoard, Cpu, Database];
-
 const sectionMotion = {
   initial: "hidden",
   whileInView: "visible",
@@ -39,16 +33,24 @@ const sectionMotion = {
   variants: fadeUp,
 };
 
-const briefText = (text: string, maxLength = 150) => {
-  if (text.length <= maxLength) return text;
-  const clipped = text.slice(0, maxLength);
-  const lastSpace = clipped.lastIndexOf(" ");
-  return `${clipped.slice(0, lastSpace > 80 ? lastSpace : maxLength).trim()}...`;
+const briefText = (text: string) => {
+  const firstSentence = text.match(/^[^.!?]+[.!?]/)?.[0];
+  return firstSentence ?? text;
+};
+
+const projectTitle = (title: string) => {
+  const titles: Record<string, string> = {
+    "Embedded Systems Lab – Alarm System & Linear Pong Game": "Embedded Systems Lab",
+    "UART-Enabled Traffic Light Controller": "UART Traffic Light",
+  };
+
+  return titles[title] ?? title;
 };
 
 export default function Home() {
   const [paletteOpen, setPaletteOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [activeSection, setActiveSection] = useState("#home");
 
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
@@ -62,9 +64,31 @@ export default function Home() {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
+  useEffect(() => {
+    const sections = ["#about", "#experiences", "#work", "#skills", "#exploring", "#contact"]
+      .map((id) => document.querySelector(id))
+      .filter((section): section is Element => section !== null);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (visible?.target.id) {
+          setActiveSection(`#${visible.target.id}`);
+        }
+      },
+      { rootMargin: "-35% 0px -55% 0px", threshold: [0.1, 0.25, 0.5] },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <main>
-      <Nav onCommand={() => setPaletteOpen(true)} />
+      <Nav onCommand={() => setPaletteOpen(true)} activeSection={activeSection} />
       <CommandPalette
         open={paletteOpen}
         onClose={() => setPaletteOpen(false)}
@@ -83,7 +107,7 @@ export default function Home() {
   );
 }
 
-function Nav({ onCommand }: { onCommand: () => void }) {
+function Nav({ onCommand, activeSection }: { onCommand: () => void; activeSection: string }) {
   return (
     <nav className="site-nav" aria-label="Primary navigation">
       <a className="nav-logo" href="#home" aria-label="Go to home">
@@ -91,13 +115,16 @@ function Nav({ onCommand }: { onCommand: () => void }) {
       </a>
       <div className="nav-links">
         {navItems.map((item) => (
-          <a href={item.href} key={item.href}>
+          <a
+            href={item.href}
+            key={item.href}
+            className={activeSection === item.href ? "active" : ""}
+          >
             {item.label}
           </a>
         ))}
       </div>
       <button className="command-trigger" onClick={onCommand} aria-label="Open command palette">
-        <Command size={15} />
         <span>Search</span>
         <kbd>⌘K</kbd>
       </button>
@@ -109,6 +136,13 @@ function Hero({ onCommand }: { onCommand: () => void }) {
   const heroRef = useRef<HTMLElement | null>(null);
 
   const onPointerMove = (event: React.PointerEvent<HTMLElement>) => {
+    if (
+      window.matchMedia("(hover: none)").matches ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      return;
+    }
+
     const rect = event.currentTarget.getBoundingClientRect();
     const x = ((event.clientX - rect.left) / rect.width - 0.5) * 2;
     const y = ((event.clientY - rect.top) / rect.height - 0.5) * 2;
@@ -187,7 +221,7 @@ function About() {
       <motion.div className="section-shell about-shell" {...sectionMotion}>
         <SectionTitle title="About" />
         <div className="about-grid">
-          <article className="profile-panel">
+          <article className="education-block">
             <h2>{portfolio.education.school}</h2>
             <p>{portfolio.education.degree}</p>
             <small>{portfolio.education.focus}</small>
@@ -196,10 +230,10 @@ function About() {
               Say hi
             </a>
           </article>
-          <article className="profile-panel profile-summary">
+          <article className="about-copy">
             <p>
               I build full-stack tools, data workflows, machine learning projects, and digital
-              systems with a focus on practical, reliable software.
+              systems.
             </p>
           </article>
         </div>
@@ -225,11 +259,7 @@ function Skills() {
           {portfolio.skills.map((group) => (
             <article className="skill-group" key={group.label}>
               <h3>{group.label}</h3>
-              <div className="pills">
-                {group.items.map((item) => (
-                  <span key={item}>{item}</span>
-                ))}
-              </div>
+              <p>{group.items.join(", ")}</p>
             </article>
           ))}
         </div>
@@ -243,17 +273,13 @@ function Exploring() {
     <section id="exploring" className="exploring section-pad">
       <div className="section-shell">
         <SectionTitle title="Currently Exploring" />
-        <div className="lab-grid">
-          {portfolio.currentlyExploring.map((item, index) => {
-            const Icon = labIcons[index % labIcons.length];
-            return (
-              <motion.div className="lab-card" key={item.title} whileHover={{ y: -4 }}>
-                <Icon size={20} />
-                <strong>{item.title}</strong>
-                <span>{item.description}</span>
-              </motion.div>
-            );
-          })}
+        <div className="exploring-list">
+          {portfolio.currentlyExploring.map((item) => (
+            <article className="exploring-row" key={item.title}>
+              <strong>{item.title}</strong>
+              <span>{item.description}</span>
+            </article>
+          ))}
         </div>
       </div>
     </section>
@@ -287,7 +313,6 @@ function Work({ onProjectSelect }: { onProjectSelect: (project: Project) => void
               onOpen={onProjectSelect}
               hovered={hovered}
               setHovered={setHovered}
-              delay={index * 0.04}
             />
           ))}
         </div>
@@ -302,14 +327,12 @@ function ProjectTile({
   onOpen,
   hovered,
   setHovered,
-  delay = 0,
 }: {
   project: Project;
   featured?: boolean;
   onOpen: (project: Project) => void;
   hovered: string | null;
   setHovered: (title: string | null) => void;
-  delay?: number;
 }) {
   const isDimmed = hovered && hovered !== project.title;
 
@@ -320,17 +343,13 @@ function ProjectTile({
       onClick={() => onOpen(project)}
       onMouseEnter={() => setHovered(project.title)}
       onMouseLeave={() => setHovered(null)}
-      initial={{ opacity: 0, y: 34 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.18 }}
-      transition={{ duration: 0.58, delay }}
     >
       <ProjectArt project={project} />
       <div className="project-copy">
-        <h3>{project.title}</h3>
+        <h3>{projectTitle(project.title)}</h3>
         <p>{briefText(project.description)}</p>
         <div>
-          {project.tags.slice(0, featured ? 5 : 3).map((tag) => (
+          {project.tags.slice(0, 3).map((tag) => (
             <small key={tag}>{tag}</small>
           ))}
         </div>
@@ -418,7 +437,6 @@ function ExperienceSection() {
 
   return (
     <section id="experiences" className="experience section-pad">
-      <SignalCanvas />
       <div className="section-shell experience-shell">
         <SectionTitle title="Experience" />
         <div className="timeline-layout">
@@ -486,25 +504,18 @@ function Contact() {
   return (
     <section id="contact" className="contact section-pad">
       <div className="section-shell contact-shell">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.24 }}
-          variants={fadeUp}
-        >
-          <SectionTitle title="Contact" />
-          <div className="contact-actions">
-            <a className="primary-button light" href={`mailto:${portfolio.person.email}`}>
-              <Mail size={18} /> Email
-            </a>
-            <a className="ghost-button light" href={portfolio.person.linkedin} target="_blank" rel="noreferrer">
-              <ExternalLink size={18} /> LinkedIn
-            </a>
-            <a className="ghost-button light" href={portfolio.person.github} target="_blank" rel="noreferrer">
-              <ExternalLink size={18} /> GitHub
-            </a>
-          </div>
-        </motion.div>
+        <SectionTitle title="Contact" />
+        <a className="email-link" href={`mailto:${portfolio.person.email}`}>
+          {portfolio.person.email}
+        </a>
+        <div className="contact-links">
+          <a href={portfolio.person.linkedin} target="_blank" rel="noreferrer">
+            LinkedIn
+          </a>
+          <a href={portfolio.person.github} target="_blank" rel="noreferrer">
+            GitHub
+          </a>
+        </div>
       </div>
     </section>
   );
@@ -639,60 +650,4 @@ function CommandPalette({
       )}
     </AnimatePresence>
   );
-}
-
-function SignalCanvas() {
-  const ref = useRef<HTMLCanvasElement | null>(null);
-
-  useEffect(() => {
-    const canvas = ref.current;
-    if (!canvas) return;
-    const context = canvas.getContext("2d");
-    if (!context) return;
-    let animation = 0;
-    let frame = 0;
-    const nodes = Array.from({ length: 18 }, () => ({
-      x: Math.random(),
-      y: Math.random(),
-      phase: Math.random() * 100,
-    }));
-
-    const resize = () => {
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-    };
-
-    const draw = () => {
-      context.clearRect(0, 0, canvas.width, canvas.height);
-      context.strokeStyle = "rgba(18, 28, 36, 0.08)";
-      context.lineWidth = 1;
-      nodes.forEach((node, index) => {
-        const x = node.x * canvas.width + Math.sin((frame + node.phase) / 65) * 9;
-        const y = node.y * canvas.height + Math.cos((frame + node.phase) / 80) * 7;
-        context.fillStyle = "rgba(18, 28, 36, 0.18)";
-        context.beginPath();
-        context.arc(x, y, 3, 0, Math.PI * 2);
-        context.fill();
-
-        if (index % 3 === 0) {
-          context.beginPath();
-          context.moveTo(x, y);
-          context.lineTo(x + 145, y - 28);
-          context.stroke();
-        }
-      });
-      frame += 1;
-      animation = window.requestAnimationFrame(draw);
-    };
-
-    resize();
-    draw();
-    window.addEventListener("resize", resize);
-    return () => {
-      window.removeEventListener("resize", resize);
-      window.cancelAnimationFrame(animation);
-    };
-  }, []);
-
-  return <canvas className="signal-canvas" ref={ref} aria-hidden="true" />;
 }

@@ -92,8 +92,6 @@ const organisationMark = (organisation: string, fallback: number) => {
   return initials || String(fallback + 1).padStart(2, "0");
 };
 
-const yearFromDate = (date: string) => date.match(/\d{4}/)?.[0] ?? "Now";
-
 const projects = (projectsJson as RawProject[]).map((project, index): Project => ({
   title: project.title,
   description: project.description,
@@ -109,7 +107,7 @@ const experience = (historyJson as RawExperience[]).map((item, index): Experienc
   role: item.role,
   company: item.organisation,
   date: `${item.startDate} - ${item.endDate}`,
-  year: yearFromDate(item.startDate),
+  year: `${item.startDate} - ${item.endDate}`,
   logoText: organisationMark(item.organisation, index),
   points: item.experiences,
 }));
