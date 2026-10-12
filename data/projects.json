@@ -61,7 +61,6 @@
     "imageSrc": "projects/traffic_light_fpga.png",
     "description": "Developed a UART-enabled traffic light controller on an Altera DE2 FPGA using structural VHDL, finite state machines, and real-time serial communication.",
     "skills": ["VHDL", "FPGA", "UART", "Quartus II", "Finite State Machines"],
-    "demo": "https://www.example.com",
     "source": "https://github.com/khizarhaider2000/UART-Enabled-Traffic-Light-Controller"
   },
   {
@@ -69,7 +68,6 @@
     "imageSrc": "projects/budgetbuddy.png",
     "description": "BudgetBuddy is a mobile Android app that helps users manage income, track expenses, and visualize monthly budgets.",
     "skills": ["Java", "Android Studio", "Firebase", "XML"],
-    "demo": "https://www.example.com",
     "source": "https://github.com/khizarhaider2000/BudgetBuddy"
   }
 ]

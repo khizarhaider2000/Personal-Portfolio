@@ -11,6 +11,7 @@ export type Project = {
   description: string;
   details: string;
   tags: string[];
+  imageSrc: string;
   status?: string;
   accent: string;
   source?: string;
@@ -40,9 +41,10 @@ export type ExploringArea = {
 
 type RawProject = {
   title: string;
+  imageSrc: string;
   description: string;
   skills: string[];
-  demo: string;
+  demo?: string;
   source: string;
 };
 
@@ -66,6 +68,18 @@ const projectAccents = [
   "#f5b5a8",
 ];
 
+const projectImages: Record<string, string> = {
+  "ClearSpeak": "/project-images/ClearSpeak.png",
+  "CourtVision": "/project-images/CourtVision.png",
+  "FIFA WC Predictor": "/project-images/FIFA%20WC%20Predictor.png",
+  "HoopIQ": "/project-images/HoopIQ.png",
+  "March Metrics": "/project-images/March%20Metrics.png",
+  "Rentify App": "/project-images/rentify.png",
+  "Embedded Systems Lab – Alarm System & Linear Pong Game": "/project-images/Embedded%20Systems.png",
+  "UART-Enabled Traffic Light Controller": "/project-images/UART.png",
+  "BudgetBuddy": "/project-images/BudgetBuddy.png",
+};
+
 const organisationMark = (organisation: string, fallback: number) => {
   const initials = organisation
     .split(/[\s()+,-]+/)
@@ -85,6 +99,7 @@ const projects = (projectsJson as RawProject[]).map((project, index): Project =>
   description: project.description,
   details: project.description,
   tags: project.skills,
+  imageSrc: projectImages[project.title] ?? project.imageSrc,
   accent: projectAccents[index % projectAccents.length],
   demo: project.demo,
   source: project.source,
@@ -101,11 +116,11 @@ const experience = (historyJson as RawExperience[]).map((item, index): Experienc
 
 const skills = [
   {
-    label: "01. Languages",
+    label: "Languages",
     items: ["Python", "Java", "JavaScript", "C", "R", "SQL", "VHDL", "MATLAB"],
   },
   {
-    label: "02. Frameworks & Technologies",
+    label: "Frameworks & Technologies",
     items: [
       "React",
       "FastAPI",
@@ -122,7 +137,7 @@ const skills = [
     ],
   },
   {
-    label: "03. Tools & Hardware",
+    label: "Tools & Hardware",
     items: [
       "Git",
       "GitHub",
@@ -147,10 +162,10 @@ export const portfolio = {
     shortName: "Khizar",
     headline: "I turn ideas into reality, one commit at a time",
     bio: "Short biography placeholder. Replace this with a concise story about your work, interests, and the kind of problems you like solving.",
-    email: "you@example.com",
+    email: "khizarhaider8@hotmail.com",
     resume: "/resume.pdf",
     github: "https://github.com/khizarhaider2000",
-    linkedin: "https://linkedin.com/in/your-username",
+    linkedin: "https://www.linkedin.com/in/khizarhaider/",
     twitter: "https://twitter.com/your-username",
   },
   education: {
